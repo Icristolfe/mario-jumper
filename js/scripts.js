@@ -4,38 +4,68 @@ const gameBoard = document.querySelector('.game-board')
 const reload = document.querySelector('.reload')
 const counter = document.querySelector('.counter')
 const counter2 = document.getElementById('counter2')
+const altura = window.screen.height;
+const largura = window.screen.width;
 
 const jump = (e) => {
     e.preventDefault()
     mario.classList.add('jump')
 
+   if(largura <= 600){
+    setTimeout(() => {
+        mario.classList.remove('jump')
+    }, 1000)
+   }
+   else {
     setTimeout(() => {
         mario.classList.remove('jump')
     }, 800)
+   }
+   
+
+   
 
 }
 
 
 const loop = setInterval(() => {
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '')
-    const pipePostion = pipe.offsetLeft
+    const pipePosition = pipe.offsetLeft
 
-    if (pipePostion <= 120 && pipePostion > 0 && marioPosition <= 100) {
+
+    if (largura > 600 && pipePosition <= 120 && pipePosition > 0 && marioPosition <= 100) {
         pipe.style.animation = 'none'
-        pipe.style.left = `${pipePostion}px`
+        pipe.style.left = `${pipePosition}px`
 
         mario.style.animation = 'none'
         mario.style.bottom = `${marioPosition}px`
         mario.src = './assets/game-over.png'
         mario.style.width = '75px'
-        mario.style.marginLeft = '50px'
+        mario.style.marginLeft = `50px`
+
+        reload.style.visibility = 'visible'
+        reload.style.position = 'absolute'
+        console.log(largura, altura)
+
+        clearInterval(loop)
+    }
+
+    if (largura <= 600 && pipePosition <= 90 && pipePosition > 0 && marioPosition <= 100) {
+        pipe.style.animation = 'none'
+        pipe.style.left = `${pipePosition}px`   
+        console.log(pipePosition)
+
+        mario.style.animation = 'none'
+        mario.style.bottom = `${marioPosition}px`
+        mario.src = './assets/game-over.png'
+        mario.style.width = '60px'
+        mario.style.marginLeft = `37px`
 
         reload.style.visibility = 'visible'
         reload.style.position = 'absolute'
 
         clearInterval(loop)
     }
-
 
 }, 10)
 
@@ -48,3 +78,4 @@ document.addEventListener('keydown', jump)
 document.addEventListener('click', jump)
 
 reload.addEventListener('click', reloadGame)
+
