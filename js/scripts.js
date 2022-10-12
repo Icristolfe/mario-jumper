@@ -45,5 +45,6 @@ const reloadGame = () => {
 }
 
 document.addEventListener('keydown', jump)
+document.addEventListener('click', jump)
 
 reload.addEventListener('click', reloadGame)
