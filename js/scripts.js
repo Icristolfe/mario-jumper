@@ -10,6 +10,7 @@ const largura = window.screen.width;
 const jump = (e) => {
     e.preventDefault()
     mario.classList.add('jump')
+   
 
    if(largura <= 600){
     setTimeout(() => {
@@ -22,8 +23,7 @@ const jump = (e) => {
     }, 800)
    }
    
-
-   
+   jumpAudio()
 
 }
 
@@ -31,7 +31,6 @@ const jump = (e) => {
 const loop = setInterval(() => {
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '')
     const pipePosition = pipe.offsetLeft
-
 
     if (largura > 600 && pipePosition <= 120 && pipePosition > 0 && marioPosition <= 100) {
         pipe.style.animation = 'none'
@@ -45,8 +44,8 @@ const loop = setInterval(() => {
 
         reload.style.visibility = 'visible'
         reload.style.position = 'absolute'
-        console.log(largura, altura)
-
+        
+        gameOverAudio()
         clearInterval(loop)
     }
 
@@ -64,6 +63,7 @@ const loop = setInterval(() => {
         reload.style.visibility = 'visible'
         reload.style.position = 'absolute'
 
+        gameOverAudio()
         clearInterval(loop)
     }
 
@@ -73,6 +73,27 @@ const reloadGame = () => {
     location.reload()
 
 }
+
+const jumpAudio = () => {
+    const audio = new Audio('./assets/pulomario.mp3')
+    audio.play()
+    
+}
+
+const gameOverAudio = () => {
+    const gameOver = new Audio('./assets/gameover.mp3')
+    gameOver.play()
+}
+
+const themeSong = () => {
+    const themeAudio = new Audio('./assets/themesong.mp3')
+    themeAudio.play()
+}
+
+// const theme = setTimeout(() => {
+//     themeSong()
+//     clearInterval(theme)
+// }, 100);
 
 document.addEventListener('keydown', jump)
 document.addEventListener('click', jump)
