@@ -50,10 +50,10 @@ const loop = setInterval(() => {
         clearInterval(loop)
     }
 
-    if (largura <= 600 && pipePosition <= 90 && pipePosition > 0 && marioPosition <= 100) {
+    if (largura <= 600 && pipePosition <= 90 && pipePosition > 0 && marioPosition <= 80) {
         pipe.style.animation = 'none'
         pipe.style.left = `${pipePosition}px`   
-        console.log(pipePosition)
+        console.log(marioPosition)
 
         mario.style.animation = 'none'
         mario.style.bottom = `${marioPosition}px`
