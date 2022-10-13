@@ -10,7 +10,7 @@ const largura = window.screen.width;
 const jump = (e) => {
     e.preventDefault()
     mario.classList.add('jump')
-   
+    jumpAudio()
 
    if(largura <= 600){
     setTimeout(() => {
@@ -23,7 +23,7 @@ const jump = (e) => {
     }, 800)
    }
    
-   jumpAudio()
+  
 
 }
 
@@ -85,15 +85,6 @@ const gameOverAudio = () => {
     gameOver.play()
 }
 
-const themeSong = () => {
-    const themeAudio = new Audio('./assets/themesong.mp3')
-    themeAudio.play()
-}
-
-// const theme = setTimeout(() => {
-//     themeSong()
-//     clearInterval(theme)
-// }, 100);
 
 document.addEventListener('keydown', jump)
 document.addEventListener('click', jump)
