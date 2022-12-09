@@ -1,6 +1,4 @@
-# Mario Jumper
-
-<h1>🔰Mario Runner Game. (Html, CSS, Javascript)</h1>:
+<h1>🔰 Mario Jumper. (Html, CSS, Javascript):</h1>
 <p>Jogo de obstáculo com o personagem de sucesso Mario, o jogo conta com a animação física de pulo e o encerramento do game ao bater no obstáculo com a possibilidade de reiniciar o jogo, contando  também com música ambiente classica da franquia, audio de pulo e também ao bater em algum obstáculo.</p>
 
 <img src="./assets/mariorunner1.png" alt="mario runner">
